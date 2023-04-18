@@ -109,7 +109,7 @@ if $cygwin ; then
   [ -n "$JAVA_HOME" ] &&
     JAVA_HOME=`cygpath --unix "$JAVA_HOME"`
   [ -n "$CLASSPATH" ] &&
-    CLASSPATH=`cygpath --path --unix "$CLASSPATH"`
+    CLASSPATH=`cygpath --path --unix  "$CLASSPATH"`
 fi
 
 # For Mingw, ensure paths are in UNIX format before anything is touched
