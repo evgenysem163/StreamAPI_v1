@@ -9,6 +9,7 @@ import sky.com.employeebook_2.models.Employee;
 import sky.com.employeebook_2.service.EmployeeService;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/departments")
@@ -39,16 +40,16 @@ public class EmployeeController {
                                   int department) throws NotFindException {
         return employeeService.findMinSalary(department);
     }
+    @GetMapping(value = "/all", params = "departmentId")
+    public List<Employee> findEmployeesFromDepartment(@RequestParam("departmentId") int department){
+        return employeeService.findEmployeeFromDepartment(department);
+    }
 
     @GetMapping("/all")
-    public List<Employee> findEmployeeFromDepartment(@RequestParam(value = "/departmentId",
-            required = false) Integer department) {
-        if (department != null) {
-            return employeeService.findEmployeeFromDepartment(department);
-        } else {
+    public Map<Integer,List<Employee>>  findEmployeeFromDepartment(){
             return employeeService.findEmployeeAllFromDepartment();
         }
     }
-}
+
 
 

@@ -1,20 +1,18 @@
 package sky.com.employeebook_2.service;
 
-
-
 import org.springframework.stereotype.Service;
 import sky.com.employeebook_2.exception.NotFindException;
 import sky.com.employeebook_2.models.Employee;
 
-
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
 public class EmployeeService {
-    private final  List<Employee> employees = new ArrayList<>();
+    private final List<Employee> employees = new ArrayList<>();
 
     public Employee addEmployee(Employee employee) {
         employees.add(employee);
@@ -41,11 +39,11 @@ public class EmployeeService {
                 .collect(Collectors.toList());
     }
 
-    public List<Employee> findEmployeeAllFromDepartment() {
+    public Map<Integer,List<Employee>>  findEmployeeAllFromDepartment() {
         return employees.stream()
-                .sorted(Comparator.comparing(Employee::getDepartment))
-                .collect(Collectors.toList());
+                .collect(Collectors.groupingBy(Employee::getDepartment));
     }
+
 
 
 }
