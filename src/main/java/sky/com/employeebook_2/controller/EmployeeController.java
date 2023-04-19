@@ -46,7 +46,7 @@ public class EmployeeController {
     }
 
     @GetMapping("/all")
-    public Map<Integer,List<Employee>>  findEmployeeFromDepartment(){
+    public Map<Integer,List<Employee>> findEmployeeFromDepartment(){
             return employeeService.findEmployeeAllFromDepartment();
         }
     }

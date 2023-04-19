@@ -39,7 +39,7 @@ public class EmployeeService {
                 .collect(Collectors.toList());
     }
 
-    public Map<Integer,List<Employee>>  findEmployeeAllFromDepartment() {
+    public Map<Integer,List<Employee>> findEmployeeAllFromDepartment() {
         return employees.stream()
                 .collect(Collectors.groupingBy(Employee::getDepartment));
     }
